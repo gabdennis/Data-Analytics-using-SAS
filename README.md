@@ -1,6 +1,6 @@
 # Data-Analytics-using-SAS
 
-   The goal is to develop a predictive model that estimates the sales revenue of a retail store based on various factors using information from a dataset on kaggle, which will be provided in the link below.
+   The goal is to develop a predictive model that estimates the sales revenue of a retail store based on various factors using information from a dataset on kaggle, which will be provided in the link below. The csv file can also be found in the files folder on this repository.
    https://www.kaggle.com/datasets/tevecsystems/retail-sales-forecasting/data
    
 ### Approach to the Analysis
