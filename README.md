@@ -14,7 +14,7 @@
 ```sas
 libname mydata '/home/u639XXXXX/Project';
 
-/* Load data into SAS and convert csv file */
+/* 1. Load data into SAS and convert csv file */
 proc import datafile='/home/u639XXXXX/Project/mock_kaggle.csv'
  	out=work.kaggle
 	dbms=csv
@@ -22,7 +22,7 @@ proc import datafile='/home/u639XXXXX/Project/mock_kaggle.csv'
 	(column names)  getnames=yes; 
 run; 
 
-/*Rename columns of the table */
+/* 2. Rename columns of the table */
 data kaggle;
 	set kaggle;
 	rename data = Date
@@ -31,25 +31,25 @@ data kaggle;
 		   preco = Price;
 run;
 
-/* create new column to calculate revenue */
+/* 3. create new column to calculate revenue */
 data work.kaggle;
 	set kaggle;
 	Revenue = Sales * Price;
 run;
 
-/* Convert dates in a column into months. */
+/* 4. Convert dates in a column into months. */
 data work.kaggle;
 	set kaggle;
 	Month = put(Date,monname3.);
 run;
 
-/* Identify which dates in a column correspond to which weekdays. This will help in our explatory data analysis */
+/*5. Identify which dates in a column correspond to which weekdays. This will help in our explatory data analysis */
 data work.kaggle;
 	set kaggle;
 	Day_of_Week = put(Date, downame3.);
 run;
 
-/* We then assign seasons to the corresponding months. Taking the Northern Hemisphere Approach. */
+/*6. We then assign seasons to the corresponding months. Taking the Northern Hemisphere Approach. */
 data work.kaggle;
 	set kaggle;
 	Month = month(Date); /* This extracts the month from the date given */
@@ -60,11 +60,15 @@ data work.kaggle;
 	else if Month in (6, 7, 8) then Season = 'Summer';
 	else if Month in (9, 10, 11) then Season = 'Fall';
 run;
-/*Calculate the Average Revenue by Weekday*/
+
+/*6. Calculate the Average Revenue by Weekday*/
 proc means data= kaggle;
 	class Day_of_Week;
 	var Revenue;
 run;
+```
+### Average Revenue by Weekday Histogram
+```sas 
 /*Plot a histogram based on the Average Revenue by Weekday*/
 proc sgplot data= kaggle;
 	title Average Revenue by Weekday;
@@ -73,6 +77,10 @@ proc sgplot data= kaggle;
 	yaxis label = 'Average Revenue';
 run;
 title;
+```
+### Results
+
+```sas
 /*Calculate the Average Revenue by Month*/
 proc means data= kaggle;
 	class Month;
