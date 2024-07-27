@@ -142,4 +142,40 @@ run;
 ```
 
 ### Results
+![Pearson Correlation Results](screenshots/pearson-correlation.png)
+
+## Interpretation
+
+### Simple Statistics
+- **N:** The number of observations is 937 for both revenue and price
+- **Mean:** The avg revenue is 148.22068 and price is 1.59257
+- **Std Dev:** Revenue (144.29892) and Price (0.52850), indicates the spread of the data
+- **Minimum:** The smallest observed values for revenue and price were 0
+- **Maximum:** The largest observed values for revenue is (870.24000) and price (2.98000)
+
+### Pearson Correlation Coefficients
+- **Pearson Correlation Coefficient (0.39931):** This suggests a moderate positive linear relationship between revenue and price.
+
+### Statistical Significance
+- **Prob > |r| under H0: Rho= 0:** this describes the p-values associated with the correlation coefficients
+- For revenue and price, the p-value is <.0001 indicating the correlation is statistically significant. 
+- A p-value less than 0.05 shows strong evidence against the null hypothesis. So here, we reject the null hypothesis.
+
+
+### Summary
+There is a moderate positive correlation between revenue and price meaning that as price increases, revenue tends to increase as well. Also, the correlation is significant indicating that this relationship is unlikely due to chance. 
+#
+### SAS Code for Linear Regression
+
+```sas
+proc reg data=kaggle;
+	model Revenue = Price;
+	title "Simple Linear Regression for Revenue based on Price";
+run;
+title;
+```
+
+### Results
+
+![Linear Regression Results]()
 
