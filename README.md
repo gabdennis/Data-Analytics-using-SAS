@@ -113,5 +113,5 @@ title;
 ```
 
 ### Results
-![Average Revenue by Month]()
+![Average Revenue by Month](screenshots/avg-rev-by-month.png)
 ![Average Revenue by Season]()
