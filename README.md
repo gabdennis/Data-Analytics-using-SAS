@@ -245,6 +245,10 @@ new\_Revenue = -25.07486 + 108.81828 * 5.00 = 519.016516
 $$
 
 
+And we are supported by the results from our Model
+
+![Predicted Revenue](screenshots/predicted_rev.png)
+
 ### Conclusion
 
 The Simple Linear Regression on the kaggle dataset shows a moderately significant positive relationship between Revenue and Price.
