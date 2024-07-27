@@ -114,4 +114,32 @@ title;
 
 ### Results
 ![Average Revenue by Month](screenshots/avg-rev-by-month.png)
-![Average Revenue by Season]()
+![Average Revenue by Season](screenshots/avg-rev-by-season.png)
+
+### Interpretation
+
+The histogram for Average Revenue by Month shows that the 6th month (june) had the highest average revenue compared to the other months. The historgram for Avg Rev by Season also backs up this fact with summer having the highest average revenue.
+
+# Pearson Correlation
+In short, Pearson Correlation is a stats measure that looks at how strong of a linear relationship two variables have, X and Y. Both X and Y must be continuous variables meaning that they can take on an infinite number of values. Examples of continuous values include but not limited to distance, weight, income, etc.
+
+## Task Scenario
+In this project, we have to evaluate the relationship between Revenue and Price. Using the kaggle dataset, we will determine if there is a significant linear relationship between Revenue and Price.
+
+## How?
+
+1. **Calculate the Pearson Correlation:** To measure the strength of the linear relationship between our two variables.
+
+2. **Interpret our results:** Is the relationship significant? What are the implications?
+
+### SAS Code for Pearson Correlation
+
+```sas
+proc corr data=kaggle;
+    var Revenue Price;
+    title "Pearson Correlation Between Revenue and Price";
+run;
+```
+
+### Results
+
