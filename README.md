@@ -67,7 +67,8 @@ proc means data= kaggle;
 	var Revenue;
 run;
 ```
-### Average Revenue by Weekday Histogram
+### Average Revenue by Weekday Histogram 
+
 ```sas 
 /*Plot a histogram based on the Average Revenue by Weekday*/
 proc sgplot data= kaggle;
@@ -79,7 +80,9 @@ run;
 title;
 ```
 ### Results
+![Average Revenue by Weekday](screenshots/avg-rev-by-weekday.png)
 
+### Average Revenue by Month and Season Histograms
 ```sas
 /*Calculate the Average Revenue by Month*/
 proc means data= kaggle;
@@ -107,3 +110,8 @@ proc sgplot data= kaggle;
 	yaxis label = 'Average Revenue';
 run;
 title;
+```
+
+### Results
+![Average Revenue by Month]()
+![Average Revenue by Season]()
