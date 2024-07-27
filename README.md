@@ -165,6 +165,11 @@ run;
 ### Summary
 There is a moderate positive correlation between revenue and price meaning that as price increases, revenue tends to increase as well. Also, the correlation is significant indicating that this relationship is unlikely due to chance. 
 #
+
+# Simple Linear Regression on Kaggle Dataset
+
+Simple Linear Regression is used to model the relationship between two variables, one independent and the other dependent. in this project, our independent variable is Price and our dependent is Revenue.
+
 ### SAS Code for Linear Regression
 
 ```sas
@@ -177,5 +182,71 @@ title;
 
 ### Results
 
-![Linear Regression Results]()
+![Linear Regression Results](screenshots/linear-regression.png)
+
+## Interpretation of Results
+
+| Term           | Description                                                                                 |
+|----------------|---------------------------------------------------------------------------------------------|
+| **Intercept**  | The expected value of the dependent variable (Revenue) when the independent variable (Price) is zero. |
+| **Slope**      | The change in the dependent variable (Revenue) for a one-unit change in the independent variable (Price). |
+| **R-Square**   | Proportion of variance in the dependent variable that can be explained by the independent variable. |
+| **p-value**    | Indicates if the regression coefficients are significantly different from zero.             |
+| **Standard Error** | Measures the accuracy of the regression coefficients.                                     |
+
+- **Intercept (-25.07486)**: When the Price is zero, the expected Revenue drops by $25.07486.
+- **Slope (108.81828)**: For every additional $1 increase, the Revenue is expected to increase by $108.818.
+- **R-Square (0.1594)**: Approximately 15.94% of the variability in Revenue can be explained by Price. This is relatively low suggesting that Price is not a strong predictor of revenue.
+- **p-value (<.0001)**: Indicates that the relationship between Revenue and Price is statistically significant.
+
+### Fit Plot for Revenue
+
+![Linear Regression Results](screenshots/linear-regression4.png)
+
+- **Scatter Plot and Fit Line:** The scatter plot shows individual data points of revenue against price. 
+- **Confidence and Prediction intervals:** The shaded area represents the 95% confidence level. The dashed lines indicated the 95% prediction interval.
+- **Observations and Parameters:** 937 observations, 2 parameters (intercept and slope)
+
+**Summary**
+
+The regression model highlights a positive relationship between price and revenue as indicated by the upward slope of the fit line. However the low R-squared value suggests that price alone is not a strong predictor of revenue.
+
+### Predicting Revenue 
+
+Next, we will use this model to predict the revenue when given a price.
+
+```sas
+data new_data;
+    input Price;
+    datalines;
+5.00
+;
+run;
+
+proc reg data=kaggle outest=est;
+    model Revenue = Price;
+run;
+
+data prediction;
+    set est;
+    new_Revenue = Intercept + 108.818 * 5.00;
+run;
+
+proc print data=prediction;
+    var new_Revenue;
+run;
+```
+## Calculation and Results
+
+Given our **intercept (-25.07486)** and **slope (108.81828)**, the predicted revenue for a product sold at **$5.00** is calculated:
+
+$$
+new\_Revenue = -25.07486 + 108.81828 * 5.00 = 519.016516
+$$
+
+
+### Conclusion
+
+The Simple Linear Regression on the kaggle dataset shows a moderately significant positive relationship between Revenue and Price.
+
 
