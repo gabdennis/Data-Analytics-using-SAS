@@ -34,7 +34,7 @@ run;
 /* 3. create new column to calculate revenue */
 data work.kaggle;
 	set kaggle;
-	Revenue = Sales * Price;
+	Revenue = UnitsSold * Price;
 run;
 
 /* 4. Convert dates in a column into months. */
@@ -137,7 +137,7 @@ In this project, we have to evaluate the relationship between Revenue and Price.
 ```sas
 proc corr data=kaggle;
     var Revenue Price;
-    title "Pearson Correlation Between Revenue and Price";
+    title "Pearson Correlation Between Revenue and Units Sold";
 run;
 ```
 
