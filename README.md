@@ -188,16 +188,16 @@ title;
 
 | Term           | Description                                                                                 |
 |----------------|---------------------------------------------------------------------------------------------|
-| **Intercept**  | The expected value of the dependent variable (Revenue) when the independent variable (Price) is zero. |
-| **Slope**      | The change in the dependent variable (Revenue) for a one-unit change in the independent variable (Price). |
+| **Intercept**  | The expected value of the dependent variable (Revenue) when the independent variable (Units Sold) is zero. |
+| **Slope**      | The change in the dependent variable (Revenue) for a one-unit change in the independent variable (Units Sold). |
 | **R-Square**   | Proportion of variance in the dependent variable that can be explained by the independent variable. |
 | **p-value**    | Indicates if the regression coefficients are significantly different from zero.             |
 | **Standard Error** | Measures the accuracy of the regression coefficients.                                     |
 
-- **Intercept (-25.07486)**: When the Price is zero, the expected Revenue drops by $25.07486.
-- **Slope (108.81828)**: For every additional $1 increase, the Revenue is expected to increase by $108.818.
-- **R-Square (0.1594)**: Approximately 15.94% of the variability in Revenue can be explained by Price. This is relatively low suggesting that Price is not a strong predictor of revenue.
-- **p-value (<.0001)**: Indicates that the relationship between Revenue and Price is statistically significant.
+- **Intercept (0.53611)**: When the Price is zero, the expected Revenue increases by $0.53611.
+- **Slope (1.63133)**: For every additional $1 increase, the Revenue is expected to increase by $1.63133.
+- **R-Square (0.8320)**: Approximately 83.20% of the variability in Revenue can be explained by Units Sold. 
+- **p-value (<.0001)**: Indicates that the relationship between Revenue and Units Sold is statistically significant.
 
 ### Fit Plot for Revenue
 
