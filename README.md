@@ -253,5 +253,11 @@ And we are supported by the results from our Model
 
 The Simple Linear Regression on the kaggle dataset shows a strongly significant positive relationship between Revenue and Units Sold.
 
-### Further Considerations
+## Further Considerations
 
+Our Residual Plot shows some concerning results. The pattern in the plot shows a funnel shape, an indication of heterosckedasticity. As number of units sold, our residuals increase in bot positive and negative directions rather than remaining constant. Some of the points are far away from the horizontal axis which could mean our data has significant outliers. 
+
+### Next Steps
+
+- Transformation: we could take the natural log of all X values (Units Sold) to stabilize variance.
+- Alternative Models: We could also look at models that handle heterosckedasticity.
