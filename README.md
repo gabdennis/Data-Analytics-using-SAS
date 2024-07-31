@@ -26,7 +26,7 @@ run;
 data kaggle;
 	set kaggle;
 	rename data = Date
-		   venda = Sales
+		   venda = UnitsSold
 		   estoque = Stock
 		   preco = Price;
 run;
@@ -124,7 +124,7 @@ The histogram for Average Revenue by Month shows that the 6th month (june) had t
 In short, Pearson Correlation is a stats measure that looks at how strong of a linear relationship two variables have, X and Y. Both X and Y must be continuous variables meaning that they can take on an infinite number of values. Examples of continuous values include but not limited to distance, weight, income, etc.
 
 ## Task Scenario
-In this project, we have to evaluate the relationship between Revenue and Price. Using the kaggle dataset, we will determine if there is a significant linear relationship between Revenue and Price.
+In this project, we have to evaluate the relationship between Revenue and Units Sold. Using the kaggle dataset, we will determine if there is a significant linear relationship between the two variables.
 
 ## How?
 
@@ -136,7 +136,7 @@ In this project, we have to evaluate the relationship between Revenue and Price.
 
 ```sas
 proc corr data=kaggle;
-    var Revenue Price;
+    var Revenue UnitsSold;
     title "Pearson Correlation Between Revenue and Units Sold";
 run;
 ```
@@ -147,42 +147,42 @@ run;
 ## Interpretation
 
 ### Simple Statistics
-- **N:** The number of observations is 937 for both revenue and price
-- **Mean:** The avg revenue is 148.22068 and price is 1.59257
-- **Std Dev:** Revenue (144.29892) and Price (0.52850), indicates the spread of the data
+- **N:** The number of observations is 937 for both revenue and units sold.
+- **Mean:** The avg revenue is 148.22608 and units sold is 90.53362.
+- **Std Dev:** Revenue (144.29892) and Units Sold (80.68209), indicates the spread of the data
 - **Minimum:** The smallest observed values for revenue and price were 0
-- **Maximum:** The largest observed values for revenue is (870.24000) and price (2.98000)
+- **Maximum:** The largest observed values for revenue is (870.24000) and Units Sold (542.00000)
 
 ### Pearson Correlation Coefficients
-- **Pearson Correlation Coefficient (0.39931):** This suggests a moderate positive linear relationship between revenue and price.
+- **Pearson Correlation Coefficient (0.91213):** This suggests a strong positive linear relationship between revenue and units sold.
 
 ### Statistical Significance
 - **Prob > |r| under H0: Rho= 0:** this describes the p-values associated with the correlation coefficients
-- For revenue and price, the p-value is <.0001 indicating the correlation is statistically significant. 
+- For revenue and units sold, the p-value is <.0001 indicating the correlation is statistically significant. 
 - A p-value less than 0.05 shows strong evidence against the null hypothesis. So here, we reject the null hypothesis.
 
 
 ### Summary
-There is a moderate positive correlation between revenue and price meaning that as price increases, revenue tends to increase as well. Also, the correlation is significant indicating that this relationship is unlikely due to chance. 
+There is a strong positive correlation between revenue and units sold meaning that as units sold increases, revenue tends to increase as well. Also, the correlation is significant indicating that this relationship is unlikely due to chance. 
 #
 
 # Simple Linear Regression on Kaggle Dataset
 
-Simple Linear Regression is used to model the relationship between two variables, one independent and the other dependent. in this project, our independent variable is Price and our dependent is Revenue.
+Simple Linear Regression is used to model the relationship between two variables, one independent and the other dependent. In this project, our independent variable is Units Sold and our dependent is Revenue.
 
 ### SAS Code for Linear Regression
 
 ```sas
 proc reg data=kaggle;
-	model Revenue = Price;
-	title "Simple Linear Regression for Revenue based on Price";
+	model Revenue = UnitsSold;
+	title "Simple Linear Regression for Revenue based on Units Sold";
 run;
 title;
 ```
 
 ### Results
 
-![Linear Regression Results](screenshots/linear-regression.png)
+![Linear Regression Results](screenshots/proc-reg-procedure.png)
 
 ## Interpretation of Results
 
