@@ -201,35 +201,35 @@ title;
 
 ### Fit Plot for Revenue
 
-![Linear Regression Results](screenshots/linear-regression4.png)
+![Linear Regression Results](screenshots/best-fit-line.png)
 
-- **Scatter Plot and Fit Line:** The scatter plot shows individual data points of revenue against price. 
+- **Scatter Plot and Fit Line:** The scatter plot shows individual data points of revenue against units sold. 
 - **Confidence and Prediction intervals:** The shaded area represents the 95% confidence level. The dashed lines indicated the 95% prediction interval.
 - **Observations and Parameters:** 937 observations, 2 parameters (intercept and slope)
 
-**Summary**
+**Interpretations**
 
-The regression model highlights a positive relationship between price and revenue as indicated by the upward slope of the fit line. However the low R-squared value suggests that price alone is not a strong predictor of revenue.
+Where the data is concentrated shows that our units sold mostly range from 100 to 200 units. As the data spreads out we see fewer points where units sold surpassed 200 units. This could suggest that those products were either less popular or more likely at a higher cost on average. It would explain why our revenue still remains high even though fewere of those products were sold.
 
 ### Predicting Revenue 
 
-Next, we will use this model to predict the revenue when given a price.
+Next, we will use this model to predict the revenue when given expected units sold.
 
 ```sas
 data new_data;
-    input Price;
+    input UnitsSold;
     datalines;
-5.00
+5000
 ;
 run;
 
 proc reg data=kaggle outest=est;
-    model Revenue = Price;
+    model Revenue = UnitsSold;
 run;
 
 data prediction;
     set est;
-    new_Revenue = Intercept + 108.818 * 5.00;
+    new_Revenue = Intercept + 1.63133 * 5000;
 run;
 
 proc print data=prediction;
@@ -238,10 +238,10 @@ run;
 ```
 ## Calculation and Results
 
-Given our **intercept (-25.07486)** and **slope (108.81828)**, the predicted revenue for a product sold at **$5.00** is calculated:
+Given our **intercept (0.53611)** and **slope (1.63133)**, the predicted revenue for **5000 units sold** is calculated:
 
 $$
-new\_Revenue = -25.07486 + 108.81828 * 5.00 = 519.016516
+new\_Revenue = 0.53611 + 1.63133 * 5000 = 8157.19
 $$
 
 
@@ -251,6 +251,7 @@ And we are supported by the results from our Model
 
 ### Conclusion
 
-The Simple Linear Regression on the kaggle dataset shows a moderately significant positive relationship between Revenue and Price.
+The Simple Linear Regression on the kaggle dataset shows a strongly significant positive relationship between Revenue and Units Sold.
 
+### Further Considerations
 
