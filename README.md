@@ -247,7 +247,7 @@ $$
 
 And we are supported by the results from our Model
 
-![Predicted Revenue](screenshots/predicted_rev.png)
+![Predicted Revenue](screenshots/prediction.png)
 
 ### Conclusion
 
